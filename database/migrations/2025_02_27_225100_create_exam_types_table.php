@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->id('course_id');
+        Schema::create('exam_types', function (Blueprint $table) {
+            $table->id('exam_type_id'); // Creates UNSIGNED BIGINT PRIMARY KEY
             $table->string('name', 45);
-            $table->string('description', 45)->nullable();
-            $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
+            $table->string('desc', 45)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('exam_types');
     }
 };

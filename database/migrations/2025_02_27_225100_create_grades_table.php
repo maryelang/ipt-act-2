@@ -12,18 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('grades', function (Blueprint $table) {
-            $table->id('grade_id');
+            $table->id('grade_id'); // This is UNSIGNED BIGINT
             $table->string('name', 45);
-            $table->string('desc', 45)->nullable();
+            $table->string('desc', 45);
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
      */
- public function down(): void
-   {
-       Schema::dropIfExists('grades');
+    public function down(): void
+    {
+        Schema::dropIfExists('grades');
     }
- 
 };

@@ -12,10 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('exams', function (Blueprint $table) {
-            $table->id('exam_id');
-            $table->foreignId('exam_type_id')->constrained('exam_types')->onDelete('cascade');
+            $table->id('exam_id'); // Creates UNSIGNED BIGINT PRIMARY KEY
+            $table->unsignedBigInteger('exam_type_id');
             $table->string('name', 45);
             $table->date('start_date');
+            
+            $table->foreign('exam_type_id')->references('exam_type_id')->on('exam_types')->onDelete('cascade');
+        
+            $table->timestamps();
         });
     }
 
